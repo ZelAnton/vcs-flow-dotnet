@@ -1,0 +1,30 @@
+<Project>
+	<PropertyGroup>
+		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+	</PropertyGroup>
+
+	<!--
+		Central Package Management. Declare every package version here once; individual
+		projects reference packages WITHOUT a Version attribute.
+
+		ProcessKit is the umbrella's mandated process layer — all VCS shell-outs go
+		through its IProcessRunner (see CLAUDE.md / AGENTS.md). Spectre.Console drives
+		the interactive console UI inside each command executable.
+
+		NOTE: the typed VCS CLI wrappers this toolkit is meant to build on
+		(Vcs.Git / Vcs.Jujutsu / Vcs.GitHub, and the older GhRun / JjRun) are not yet
+		published to NuGet.org. Until they are, commands shell out through ProcessKit
+		directly. Add them here when they publish — see CLAUDE.md "Pending dependencies".
+	-->
+	<ItemGroup>
+		<PackageVersion Include="ProcessKit" Version="1.3.2" />
+		<PackageVersion Include="Spectre.Console" Version="0.55.2" />
+	</ItemGroup>
+
+	<!-- Test stack. Microsoft.NET.Test.Sdk is required for `dotnet test` discovery. -->
+	<ItemGroup>
+		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.6.0" />
+		<PackageVersion Include="NUnit" Version="4.6.1" />
+		<PackageVersion Include="NUnit3TestAdapter" Version="6.2.0" />
+	</ItemGroup>
+</Project>

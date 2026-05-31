@@ -1,0 +1,14 @@
+<Solution>
+	<Folder Name="/Tests/">
+		<Project Path="tests/Vcs.Flow.Common.Tests/Vcs.Flow.Common.Tests.csproj">
+			<BuildDependency Project="src/Vcs.Flow.Common/Vcs.Flow.Common.csproj" />
+		</Project>
+	</Folder>
+	<Project Path="src/Vcs.Flow.Common/Vcs.Flow.Common.csproj" />
+	<Project Path="src/Vcs.Flow.Commit/Vcs.Flow.Commit.csproj">
+		<BuildDependency Project="src/Vcs.Flow.Common/Vcs.Flow.Common.csproj" />
+	</Project>
+	<Project Path="src/Vcs.Flow.Push/Vcs.Flow.Push.csproj">
+		<BuildDependency Project="src/Vcs.Flow.Common/Vcs.Flow.Common.csproj" />
+	</Project>
+</Solution>

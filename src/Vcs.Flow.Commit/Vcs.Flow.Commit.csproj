@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<!-- Bare-verb binary name: this builds `commit` (commit.exe on Windows). -->
+		<AssemblyName>commit</AssemblyName>
+		<RootNamespace>Vcs.Flow.Commit</RootNamespace>
+
+		<!-- Compiled to a native, self-contained executable. PublishAot also enables the
+		     trim/AOT analyzers at build time, so AOT-unsafe code fails the regular build. -->
+		<PublishAot>true</PublishAot>
+		<InvariantGlobalization>true</InvariantGlobalization>
+
+		<!-- Cross-project reference to the shared library resolves by assembly lookup,
+		     not ProjectReference; build order comes from BuildDependency in Vcs.Flow.slnx. -->
+		<AssemblySearchPaths>$(AssemblySearchPaths);$(CommonProjectDir)bin\$(Configuration)\$(TargetFramework)</AssemblySearchPaths>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="Vcs.Flow.Common" />
+	</ItemGroup>
+
+	<!-- ProcessKit is referenced again here (not flowed through the assembly Reference) so
+	     its assembly is present for the native publish; Spectre.Console drives the UI. -->
+	<ItemGroup>
+		<PackageReference Include="ProcessKit" />
+		<PackageReference Include="Spectre.Console" />
+	</ItemGroup>
+
+</Project>

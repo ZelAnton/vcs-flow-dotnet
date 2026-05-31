@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>Vcs.Flow.Common</AssemblyName>
+		<RootNamespace>Vcs.Flow.Common</RootNamespace>
+	</PropertyGroup>
+
+	<!-- Shared layer: VCS process invocation goes through ProcessKit's IProcessRunner.
+	     Keep the interactive console UI out of here — it lives in each command project. -->
+	<ItemGroup>
+		<PackageReference Include="ProcessKit" />
+	</ItemGroup>
+
+</Project>

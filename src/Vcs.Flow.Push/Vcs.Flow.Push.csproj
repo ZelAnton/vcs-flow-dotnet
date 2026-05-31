@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<!-- Bare-verb binary name: this builds `push` (push.exe on Windows). -->
+		<AssemblyName>push</AssemblyName>
+		<RootNamespace>Vcs.Flow.Push</RootNamespace>
+
+		<PublishAot>true</PublishAot>
+		<InvariantGlobalization>true</InvariantGlobalization>
+
+		<AssemblySearchPaths>$(AssemblySearchPaths);$(CommonProjectDir)bin\$(Configuration)\$(TargetFramework)</AssemblySearchPaths>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="Vcs.Flow.Common" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="ProcessKit" />
+		<PackageReference Include="Spectre.Console" />
+	</ItemGroup>
+
+</Project>

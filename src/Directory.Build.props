@@ -1,0 +1,22 @@
+<Project>
+	<!-- Inherit the repository-wide settings (RepoRoot, language, warnings-as-errors,
+	     NuGet audit) from the root Directory.Build.props. -->
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+	<PropertyGroup>
+		<Authors>Anton Zhelezniakou</Authors>
+		<Copyright>Copyright (c) 2026 Anton Zhelezniakou</Copyright>
+
+		<!-- These are CLI applications, not NuGet packages. -->
+		<IsPackable>false</IsPackable>
+
+		<!-- Turn on the trim / AOT / single-file analyzers for every project under src/
+		     so reflection or other AOT-unsafe patterns surface as build errors (with
+		     warnings-as-errors) long before the native publish runs. The command
+		     executables additionally set <PublishAot>true</PublishAot>. -->
+		<IsAotCompatible>true</IsAotCompatible>
+
+		<Deterministic>true</Deterministic>
+		<ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+	</PropertyGroup>
+</Project>
